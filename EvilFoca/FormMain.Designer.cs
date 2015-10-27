@@ -131,6 +131,18 @@ namespace evilfoca
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbIpGetIP = new System.Windows.Forms.TextBox();
+            this.btGetIP = new System.Windows.Forms.Button();
+            this.lbIpAdressess = new System.Windows.Forms.ListBox();
+            this.btCopyIp = new System.Windows.Forms.Button();
+            this.iPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage15 = new System.Windows.Forms.TabPage();
+            this.btnAttack = new System.Windows.Forms.Button();
+            this.wbBrowser = new System.Windows.Forms.WebBrowser();
+            this.lbRoutersBruteForce = new System.Windows.Forms.ListBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbRouterAttackLogs = new System.Windows.Forms.TextBox();
             this.treeView = new evilfoca.BufferedTreeView();
             this.panelNeighborAdvSpoof = new evilfoca.PanelTargets();
             this.panelTargetSLAACMitm = new evilfoca.PanelTarget();
@@ -188,6 +200,7 @@ namespace evilfoca
             this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.tabPage15.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelIzquierda
@@ -405,6 +418,7 @@ namespace evilfoca
             // splitContainerHelp.Panel2
             // 
             this.splitContainerHelp.Panel2.Controls.Add(this.help);
+            this.splitContainerHelp.Panel2.Controls.Add(this.wbBrowser);
             this.splitContainerHelp.Panel2.Padding = new System.Windows.Forms.Padding(0, 20, 3, 0);
             this.splitContainerHelp.Size = new System.Drawing.Size(690, 291);
             this.splitContainerHelp.SplitterDistance = 501;
@@ -417,6 +431,7 @@ namespace evilfoca
             this.panelMainOptions.Controls.Add(this.tabPage4);
             this.panelMainOptions.Controls.Add(this.tabPage6);
             this.panelMainOptions.Controls.Add(this.tabPage3);
+            this.panelMainOptions.Controls.Add(this.tabPage15);
             this.panelMainOptions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMainOptions.ImageList = this.imageList1;
             this.panelMainOptions.Location = new System.Drawing.Point(0, 0);
@@ -1008,6 +1023,11 @@ namespace evilfoca
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btCopyIp);
+            this.panel1.Controls.Add(this.lbIpAdressess);
+            this.panel1.Controls.Add(this.btGetIP);
+            this.panel1.Controls.Add(this.tbIpGetIP);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.lbAdvertisement);
             this.panel1.Controls.Add(this.btAddDNSHijack);
             this.panel1.Controls.Add(this.tbDomainDNSHijack);
@@ -1038,7 +1058,7 @@ namespace evilfoca
             // btAddDNSHijack
             // 
             this.btAddDNSHijack.Image = global::evilfoca.Properties.Resources.Start;
-            this.btAddDNSHijack.Location = new System.Drawing.Point(65, 175);
+            this.btAddDNSHijack.Location = new System.Drawing.Point(36, 170);
             this.btAddDNSHijack.Name = "btAddDNSHijack";
             this.btAddDNSHijack.Size = new System.Drawing.Size(70, 23);
             this.btAddDNSHijack.TabIndex = 6;
@@ -1050,7 +1070,7 @@ namespace evilfoca
             // 
             // tbDomainDNSHijack
             // 
-            this.tbDomainDNSHijack.Location = new System.Drawing.Point(128, 111);
+            this.tbDomainDNSHijack.Location = new System.Drawing.Point(99, 108);
             this.tbDomainDNSHijack.Name = "tbDomainDNSHijack";
             this.tbDomainDNSHijack.Size = new System.Drawing.Size(100, 20);
             this.tbDomainDNSHijack.TabIndex = 3;
@@ -1058,7 +1078,7 @@ namespace evilfoca
             // cbWildcardDnsHijack
             // 
             this.cbWildcardDnsHijack.AutoSize = true;
-            this.cbWildcardDnsHijack.Location = new System.Drawing.Point(234, 113);
+            this.cbWildcardDnsHijack.Location = new System.Drawing.Point(205, 110);
             this.cbWildcardDnsHijack.Name = "cbWildcardDnsHijack";
             this.cbWildcardDnsHijack.Size = new System.Drawing.Size(65, 17);
             this.cbWildcardDnsHijack.TabIndex = 5;
@@ -1069,7 +1089,7 @@ namespace evilfoca
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(62, 114);
+            this.label2.Location = new System.Drawing.Point(33, 111);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 1;
@@ -1077,7 +1097,7 @@ namespace evilfoca
             // 
             // tbIpDNSHijack
             // 
-            this.tbIpDNSHijack.Location = new System.Drawing.Point(128, 138);
+            this.tbIpDNSHijack.Location = new System.Drawing.Point(99, 134);
             this.tbIpDNSHijack.Name = "tbIpDNSHijack";
             this.tbIpDNSHijack.Size = new System.Drawing.Size(100, 20);
             this.tbIpDNSHijack.TabIndex = 4;
@@ -1085,7 +1105,7 @@ namespace evilfoca
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(62, 141);
+            this.label3.Location = new System.Drawing.Point(33, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 13);
             this.label3.TabIndex = 2;
@@ -1102,7 +1122,8 @@ namespace evilfoca
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.configurationToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.iPToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -1160,6 +1181,120 @@ namespace evilfoca
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(312, 111);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(37, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Get IP";
+            // 
+            // tbIpGetIP
+            // 
+            this.tbIpGetIP.Location = new System.Drawing.Point(355, 107);
+            this.tbIpGetIP.Name = "tbIpGetIP";
+            this.tbIpGetIP.Size = new System.Drawing.Size(123, 20);
+            this.tbIpGetIP.TabIndex = 8;
+            // 
+            // btGetIP
+            // 
+            this.btGetIP.Image = global::evilfoca.Properties.Resources.Exit;
+            this.btGetIP.Location = new System.Drawing.Point(295, 134);
+            this.btGetIP.Name = "btGetIP";
+            this.btGetIP.Size = new System.Drawing.Size(54, 24);
+            this.btGetIP.TabIndex = 9;
+            this.btGetIP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btGetIP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btGetIP.UseVisualStyleBackColor = true;
+            this.btGetIP.Click += new System.EventHandler(this.btGetIP_Click);
+            // 
+            // lbIpAdressess
+            // 
+            this.lbIpAdressess.FormattingEnabled = true;
+            this.lbIpAdressess.Location = new System.Drawing.Point(355, 133);
+            this.lbIpAdressess.Name = "lbIpAdressess";
+            this.lbIpAdressess.Size = new System.Drawing.Size(123, 108);
+            this.lbIpAdressess.TabIndex = 11;
+            // 
+            // btCopyIp
+            // 
+            this.btCopyIp.Image = global::evilfoca.Properties.Resources.Copy;
+            this.btCopyIp.Location = new System.Drawing.Point(295, 170);
+            this.btCopyIp.Name = "btCopyIp";
+            this.btCopyIp.Size = new System.Drawing.Size(54, 26);
+            this.btCopyIp.TabIndex = 12;
+            this.btCopyIp.Text = "Copy";
+            this.btCopyIp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btCopyIp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btCopyIp.UseVisualStyleBackColor = true;
+            this.btCopyIp.Click += new System.EventHandler(this.btCopyIp_Click);
+            // 
+            // iPToolStripMenuItem
+            // 
+            this.iPToolStripMenuItem.ForeColor = System.Drawing.Color.ForestGreen;
+            this.iPToolStripMenuItem.Name = "iPToolStripMenuItem";
+            this.iPToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.iPToolStripMenuItem.Text = "IP - ";
+            // 
+            // tabPage15
+            // 
+            this.tabPage15.Controls.Add(this.tbRouterAttackLogs);
+            this.tabPage15.Controls.Add(this.label10);
+            this.tabPage15.Controls.Add(this.lbRoutersBruteForce);
+            this.tabPage15.Controls.Add(this.btnAttack);
+            this.tabPage15.Location = new System.Drawing.Point(4, 23);
+            this.tabPage15.Name = "tabPage15";
+            this.tabPage15.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage15.Size = new System.Drawing.Size(493, 264);
+            this.tabPage15.TabIndex = 5;
+            this.tabPage15.Text = "Bruteforce";
+            this.tabPage15.UseVisualStyleBackColor = true;
+            // 
+            // btnAttack
+            // 
+            this.btnAttack.Location = new System.Drawing.Point(59, 8);
+            this.btnAttack.Name = "btnAttack";
+            this.btnAttack.Size = new System.Drawing.Size(75, 23);
+            this.btnAttack.TabIndex = 0;
+            this.btnAttack.Text = "Attack";
+            this.btnAttack.UseVisualStyleBackColor = true;
+            this.btnAttack.Click += new System.EventHandler(this.btnAttack_Click);
+            // 
+            // wbBrowser
+            // 
+            this.wbBrowser.Location = new System.Drawing.Point(3, 155);
+            this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.wbBrowser.Name = "wbBrowser";
+            this.wbBrowser.Size = new System.Drawing.Size(36, 32);
+            this.wbBrowser.TabIndex = 1;
+            this.wbBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.wbBrowser_DocumentCompleted);
+            // 
+            // lbRoutersBruteForce
+            // 
+            this.lbRoutersBruteForce.FormattingEnabled = true;
+            this.lbRoutersBruteForce.Location = new System.Drawing.Point(9, 46);
+            this.lbRoutersBruteForce.Name = "lbRoutersBruteForce";
+            this.lbRoutersBruteForce.Size = new System.Drawing.Size(125, 69);
+            this.lbRoutersBruteForce.TabIndex = 2;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 13);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 13);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Routers:";
+            // 
+            // tbRouterAttackLogs
+            // 
+            this.tbRouterAttackLogs.Location = new System.Drawing.Point(140, 8);
+            this.tbRouterAttackLogs.Multiline = true;
+            this.tbRouterAttackLogs.Name = "tbRouterAttackLogs";
+            this.tbRouterAttackLogs.Size = new System.Drawing.Size(313, 107);
+            this.tbRouterAttackLogs.TabIndex = 4;
             // 
             // treeView
             // 
@@ -1228,7 +1363,7 @@ namespace evilfoca
             | System.Windows.Forms.AnchorStyles.Right)));
             this.wpadTargetPanel.Location = new System.Drawing.Point(3, 3);
             this.wpadTargetPanel.Name = "wpadTargetPanel";
-            this.wpadTargetPanel.Size = new System.Drawing.Size(473, 188);
+            this.wpadTargetPanel.Size = new System.Drawing.Size(473, 190);
             this.wpadTargetPanel.TabIndex = 6;
             // 
             // panelTargetSLAACDoS
@@ -1355,6 +1490,8 @@ namespace evilfoca
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tabPage15.ResumeLayout(false);
+            this.tabPage15.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1458,6 +1595,18 @@ namespace evilfoca
         private System.Windows.Forms.Button btnWpadv6Attack;
         private PanelTarget wpadv6TargetPanel;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btGetIP;
+        private System.Windows.Forms.TextBox tbIpGetIP;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox lbIpAdressess;
+        private System.Windows.Forms.Button btCopyIp;
+        private System.Windows.Forms.ToolStripMenuItem iPToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage15;
+        private System.Windows.Forms.Button btnAttack;
+        private System.Windows.Forms.WebBrowser wbBrowser;
+        private System.Windows.Forms.ListBox lbRoutersBruteForce;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbRouterAttackLogs;
     }
 }
 
